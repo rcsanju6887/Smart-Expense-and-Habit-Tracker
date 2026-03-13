@@ -54,7 +54,7 @@ The platform will help users understand the relationship between **spending beha
 
 The system will operate through a web-based interface where users can create an account and manage their personal data.
 
-## Basic Workflow
+## 3.1 Basic Workflow
 
 1. User registers an account
 2. User logs into the system
@@ -69,33 +69,56 @@ The system will follow a **client-server architecture**.
 The **frontend** will communicate with the **backend** using **REST APIs**.
 
 ---
+## 3.2 System Architecture
+
+### Architecture Layers
+
+• Client Layer  
+Next.js frontend handles user interface and user interaction.
+
+• Application Layer  
+Node.js and Express handle API logic, authentication, and business rules.
+
+• Data Layer  
+MongoDB stores all user, expense, and habit data.
+
+Architecture Flow:
+
+User Browser
+      ↓
+Next.js Frontend
+      ↓
+REST API (Express Server)
+      ↓
+MongoDB Atlas Database
+
+---
 
 # 4. Technologies Used
 
 The project will be developed using the **MERN Stack** along with modern web development tools.
 
-## Frontend
-- React.js
-- Next.js
+## 4.1 Frontend
+- Next.js (React framework)
 - JavaScript
 - CSS
 
-## Backend
+## 4.2 Backend
 - Node.js
 - Express.js
 
-## Database
+## 4.3 Database
 - MongoDB
 - MongoDB Atlas
 
-## Development Tools
+## 4.4 Development Tools
 - Visual Studio Code
 - Git
 - GitHub
 - Postman
 - MongoDB Compass
 
-## Deployment
+## 4.5 Deployment
 - Vercel (Frontend hosting)
 - Render or similar cloud service (Backend hosting)
 
@@ -198,23 +221,42 @@ Users will be able to:
 
 The system includes several important security and architecture features.
 
-## Authentication
+## 6.1 Authentication
 - JWT based authentication
-- Secure password hashing
+- Password hashing using bcrypt
 - Protected backend routes
+- Input validation for all requests
+- Secure API communication
 
-## API Design
+## 6.2 API Design
 - RESTful API structure
 - Secure request validation
 - Proper error handling
 
-## Data Validation
+## 6.3 Data Validation
 
 Forms will include:
 
 - Input validation
 - Error messages
 - Required field checks
+
+## 6.4 API Architecture
+
+The backend will follow a RESTful API design.
+
+Example API endpoints:
+
+POST /api/auth/register  
+POST /api/auth/login  
+
+GET /api/expenses  
+POST /api/expenses  
+PUT /api/expenses/:id  
+DELETE /api/expenses/:id  
+
+POST /api/habits  
+GET /api/habits
 
 ---
 
@@ -251,23 +293,58 @@ These features represent the **core functionality** of the application.
 
 ---
 
-# 9. Non-Negotiable MVP Data per Project
+# 9. Database Design
+
+The system will use MongoDB as the primary database.
+
+MongoDB Atlas will be used for cloud database hosting.
+
+MongoDB Atlas will provide secure cloud database hosting, automatic backups, and scalable storage for the application.
+
+Data will be stored in the following collections:
+
+**Users Collection**
+- _id
+- name
+- email
+- password
+
+**Expenses Collection**
+- _id
+- userId
+- amount
+- category
+- description
+- date
+
+**Habits Collection**
+- _id
+- userId
+- studyHours
+- sleepDuration
+- exerciseTime
+- date
+
+MongoDB is chosen because it is flexible, scalable, and well suited for JavaScript-based full stack applications.
+
+
+# 10. Non-Negotiable MVP Data 
 
 The following data will be stored in the system database.
 
-## User Data
+## 10.1 User Data
 - Name
 - Email
 - Password (hashed)
 
-## Expense Data
+## 10.2 Expense Data
 - User ID
 - Amount
 - Category
 - Date
 - Description
 
-## Habit Data
+## 10.3 Habit Data
 - User ID
 - Study hours
 - Sleep duration
@@ -276,37 +353,35 @@ The following data will be stored in the system database.
 
 ---
 
-# 10. Recommended Project Folder Structure
+# 11. Recommended Project Folder Structure
 
-
-The project will follow a structured MERN-based architecture.
+The project will follow a monorepo architecture to manage both frontend and backend within a single repository. 
 
 ```
 Smart-Expense-and-Habit-Tracker
 │
-├── frontend             # Next.js + React
-│   ├── components
-│   ├── pages
-│   ├── styles
-│   ├── services
-│   └── utils
+├── apps
+│   │
+│   ├── web                 # Next.js Frontend Application
+│   │   ├── app
+│   │   ├── components
+│   │   ├── services
+│   │   ├── utils
+│   │   └── styles
+│   │
+│   └── api                 # Node.js + Express Backend
+│       ├── controllers
+│       ├── routes
+│       ├── models
+│       ├── middleware
+│       ├── config
+│       └── server.js
 │
-├── backend               # Express API
-│   ├── controllers
-│   ├── routes
-│   ├── models
-│   ├── middleware
-│   ├── config
-│   └── server.js
+├── docs                    # Project documentation
 │
-├── database
-│   └── mongodb-schema
-│
-├── docs
-│   └── project-documentation
-│
-├── plan.md
-└── README.md
+├── plan.md                 # Project planning document
+├── README.md               # GitHub project overview
+└── package.json
 ```
 
 This structure helps maintain:
@@ -317,7 +392,19 @@ This structure helps maintain:
 
 ---
 
-# 11. Conclusion
+# 12. Future Improvements
+
+Future versions of the system may include:
+
+- Mobile application version
+- AI-based spending prediction
+- Budget planning assistant
+- Notification system
+- Integration with financial services
+
+---
+
+# 13. Conclusion
 
 Smart Expense and Habit Tracker is a practical web application designed to improve financial discipline and personal productivity.
 
