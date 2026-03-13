@@ -284,14 +284,14 @@ The project will follow a structured MERN-based architecture.
 ```
 Smart-Expense-and-Habit-Tracker
 │
-├── frontend
+├── frontend             # Next.js + React
 │   ├── components
 │   ├── pages
 │   ├── styles
 │   ├── services
 │   └── utils
 │
-├── backend
+├── backend               # Express API
 │   ├── controllers
 │   ├── routes
 │   ├── models
